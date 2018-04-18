@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>service list</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" charset="utf-8" />
+    <link href="css/common.css" rel="stylesheet" charset="utf-8" />
+
+    <style>
+        .checkbox.ip-checkbox{
+            float: left;
+            padding: 7px;
+            width: 120px;
+            max-width: 120px;
+            margin-right: 15px;
+            border: 1px solid #dddddd;
+            margin-top: 0px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <a class="navbar-brand" href="javascript:void(0)"><span class="glyphicon glyphicon-home"></span> Home</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+            <ul class="nav navbar-nav">
+                <li><a href="/services">services</a></li>
+                <li class="active"><a href="/files">files</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+
+    </div>
+</nav>
+<div class="clearfix nav-height"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <input type="text" class="form-control" placeholder="/data" />
+            </div>
+        </div><!-- .row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div style="padding-top: 10px">
+                    <div class="checkbox ip-checkbox">
+                        <label>
+                            <input type="checkbox"> 127.0.0.1 </input>
+                        </label>
+                    </div>
+                    <div class="checkbox ip-checkbox">
+                        <label>
+                            <input type="checkbox"> 127.0.0.2 </input>
+                        </label>
+                    </div>
+                    <div class="checkbox ip-checkbox">
+                        <label>
+                            <input type="checkbox"> 127.0.0.1 </input>
+                        </label>
+                    </div>
+                    <div class="checkbox ip-checkbox">
+                        <label>
+                            <input type="checkbox"> 127.0.0.2 </input>
+                        </label>
+                    </div>
+                    <div class="checkbox ip-checkbox">
+                        <label>
+                            <input type="checkbox"> 127.0.0.1 </input>
+                        </label>
+                    </div>
+                    <div class="checkbox ip-checkbox">
+                        <label>
+                            <input type="checkbox"> 127.0.0.2 </input>
+                        </label>
+                    </div>
+                    <div class="checkbox ip-checkbox">
+                        <label>
+                            <input type="checkbox"> 127.0.0.1 </input>
+                        </label>
+                    </div>
+                    <div class="checkbox ip-checkbox">
+                        <label>
+                            <input type="checkbox"> 127.0.0.2 </input>
+                        </label>
+                    </div>
+                    <div class="checkbox ip-checkbox">
+                        <label>
+                            <input type="checkbox"> 127.0.0.1 </input>
+                        </label>
+                    </div>
+                    <div class="checkbox ip-checkbox">
+                        <label>
+                            <input type="checkbox"> 127.0.0.2 </input>
+                        </label>
+                    </div>
+                    <div class="checkbox ip-checkbox">
+                        <label>
+                            <input type="checkbox"> 127.0.0.1 </input>
+                        </label>
+                    </div>
+                    <div class="checkbox ip-checkbox">
+                        <label>
+                            <a href="javascript:void(0)">add-host</a>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div><!-- .row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default" style="padding:15px">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> /data </input>
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> /opt </input>
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> /usr </input>
+                        </label>
+                    </div>
+                </div>
+            </div><!-- .col-lg-12 -->
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default">tail</button>
+                        <button type="button" class="btn btn-default">head</button>
+                    </div>
+
+                    <input type="text" class="form-control" placeholder="Search for..." />
+                    <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Query</button>
+                </span>
+                </div><!-- /input-group -->
+            </div>
+        </div>
+    </div><!-- .container-fluid -->
+
+</body>
+<script src="jquery/jquery-2.2.3.min.js"></script>
+<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+</html>
