@@ -19,7 +19,7 @@ $("#go-path").click(function () {
     data.host = {"ip":"192.168.31.147","username":"lzz","password":"363216"};
     post("/file-list", data, function(obj){
         console.log(obj.res);
-        var boxstr = '<div class="panel panel-default" style="padding:15px">';
+        var boxstr = '<div style="padding:15px">';
         for(var key in obj.res){
             boxstr += '<div class="checkbox"><label><input type="checkbox" name="file-checkbox" value="'+ obj.res[key] +'"> <span class="go-file">' + obj.res[key] + '</span> </input></label></div>';
         }
