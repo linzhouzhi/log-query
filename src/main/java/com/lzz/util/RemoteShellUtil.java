@@ -57,6 +57,8 @@ public class RemoteShellUtil {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }finally {
+            close();
         }
         return result;
     }
