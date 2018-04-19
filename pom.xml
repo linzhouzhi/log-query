@@ -53,6 +53,19 @@
             <version>1.6.1</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.7</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>21.0</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/ch.ethz.ganymed/ganymed-ssh2 -->
         <dependency>
             <groupId>ch.ethz.ganymed</groupId>

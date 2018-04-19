@@ -2,10 +2,13 @@ package com.lzz.util;
 
 import ch.ethz.ssh2.Connection;
 import ch.ethz.ssh2.Session;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 /**
  * Created by gl49 on 2018/3/20.
@@ -28,6 +31,16 @@ public class RemoteShellUtil {
         return conn.authenticateWithPassword(userName, password);
     }
 
+    public static String getLocalIp(){
+        String addr = "";
+        try {
+            addr = InetAddress.getLocalHost().getHostAddress();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+        return addr;
+    }
+
     public static String localExec(String cmd){
         String result = "";
         try {
@@ -45,6 +58,9 @@ public class RemoteShellUtil {
     }
 
     public String execRemote(String cmds) {
+        if( this.ip.equalsIgnoreCase( getLocalIp() ) ){
+            return localExec( cmds );
+        }
         String result = "";
         try {
             if (this.login()) {

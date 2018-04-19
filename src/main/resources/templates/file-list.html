@@ -41,65 +41,10 @@
     <div class="container-fluid">
         <div class="row" style="margin-top:-10px">
             <div class="col-lg-12">
-                <div>
+                <div id="checkbox-ip-list">
                     <div class="checkbox ip-checkbox">
                         <label>
-                            <input type="checkbox"> 127.0.0.1 </input>
-                        </label>
-                    </div>
-                    <div class="checkbox ip-checkbox">
-                        <label>
-                            <input type="checkbox"> 127.0.0.2 </input>
-                        </label>
-                    </div>
-                    <div class="checkbox ip-checkbox">
-                        <label>
-                            <input type="checkbox"> 127.0.0.1 </input>
-                        </label>
-                    </div>
-                    <div class="checkbox ip-checkbox">
-                        <label>
-                            <input type="checkbox"> 127.0.0.2 </input>
-                        </label>
-                    </div>
-                    <div class="checkbox ip-checkbox">
-                        <label>
-                            <input type="checkbox"> 127.0.0.1 </input>
-                        </label>
-                    </div>
-                    <div class="checkbox ip-checkbox">
-                        <label>
-                            <input type="checkbox"> 127.0.0.2 </input>
-                        </label>
-                    </div>
-                    <div class="checkbox ip-checkbox">
-                        <label>
-                            <input type="checkbox"> 127.0.0.1 </input>
-                        </label>
-                    </div>
-                    <div class="checkbox ip-checkbox">
-                        <label>
-                            <input type="checkbox"> 127.0.0.2 </input>
-                        </label>
-                    </div>
-                    <div class="checkbox ip-checkbox">
-                        <label>
-                            <input type="checkbox"> 127.0.0.1 </input>
-                        </label>
-                    </div>
-                    <div class="checkbox ip-checkbox">
-                        <label>
-                            <input type="checkbox"> 127.0.0.2 </input>
-                        </label>
-                    </div>
-                    <div class="checkbox ip-checkbox">
-                        <label>
-                            <input type="checkbox"> 127.0.0.1 </input>
-                        </label>
-                    </div>
-                    <div class="checkbox ip-checkbox">
-                        <label>
-                            <a href="javascript:void(0)"><span class="glyphicon glyphicon-plus"></span> add-host</a>
+                            <a href="javascript:void(0)" id="add-host-button"><span class="glyphicon glyphicon-plus"></span> add-host</a>
                         </label>
                     </div>
                 </div>
@@ -107,56 +52,37 @@
         </div><!-- .row -->
 
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-6">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="/data" />
+                    <input type="text" class="form-control" name="input-path" value="/" placeholder="/data" />
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">GO</button>
+                        <button class="btn btn-default" type="button" id="go-path">Go</button>
                     </span>
                 </div>
             </div>
         </div><!-- .row -->
         <br/>
         <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-default" style="padding:15px">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"> /data </input>
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"> /opt </input>
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"> /usr </input>
-                        </label>
-                    </div>
-                </div>
-            </div><!-- .col-lg-12 -->
+            <div class="col-lg-6" id="checkbox-file-list">
+
+            </div><!-- .col-lg-6 -->
         </div>
         <div class="row">
             <div class="col-lg-6">
                 <div class="input-group">
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-default">tail</button>
-                        <button type="button" class="btn btn-default">head</button>
-                    </div>
-
-                    <input type="text" class="form-control" placeholder="Search for..." />
+                    <input type="text"  name="input-command" class="form-control" placeholder="Search for..." />
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="button" id="file-query">Query</button>
-                    </span>
-                </div><!-- /input-group -->
-            </div>
-            <div class="col-lg-6">
-                <div class="input-group">
-                    <input type="text" class="form-control" name="input-command" placeholder="ls -lh" />
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" id="remote-exe">Command</button>
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="caret"></span>
+                          <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                          <li><a href="#">tail</a></li>
+                          <li><a href="#">head</a></li>
+                          <li role="separator" class="divider"></li>
+                          <li><a href="javascript:void(0)" id="remote-exe">command</a></li>
+                        </ul>
                     </span>
                 </div><!-- /input-group -->
             </div>
@@ -174,6 +100,39 @@
             </div>
         </div><!--. row -->
     </div><!-- .container-fluid -->
+
+<div id="add-host-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Add Host</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>service</label>
+                    <input type="text" name="modal-service" class="form-control"  placeholder="itemservice" />
+                </div>
+                <div class="form-group">
+                    <label>ip</label>
+                    <input type="text" name="modal-ip" class="form-control"  placeholder="12.0.0.1" />
+                </div>
+                <div class="form-group">
+                    <label>username</label>
+                    <input type="text" name="modal-username" class="form-control"  placeholder="username" />
+                </div>
+                <div class="form-group">
+                    <label>password</label>
+                    <input type="text" name="modal-password" class="form-control"  placeholder="password" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" id="save-host-modal">Save</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 </body>
 <script src="jquery/jquery-2.2.3.min.js"></script>

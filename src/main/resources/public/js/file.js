@@ -1,18 +1,89 @@
+$(document).ready(function () {
+    $("#checkbox-ip-list").prepend();
+    init_ipList();
+});
+function init_ipList() {
+    $.get("/host-list", function (obj) {
+        var res = obj.res;
+        var str = "";
+        for(var i =0; i < res.length; i++){
+            str += '<div class="checkbox ip-checkbox"> <label> <input type="checkbox"> ' + res[i]["ip"] + ' </input> </label> </div>';
+        }
+        $("#checkbox-ip-list").prepend( str );
+    });
+
+}
+$("#go-path").click(function () {
+    var data = {};
+    data.path = $("[name='input-path']").val();
+    data.host = {"ip":"192.168.31.147","username":"lzz","password":"363216"};
+    post("/file-list", data, function(obj){
+        console.log(obj.res);
+        var boxstr = '<div class="panel panel-default" style="padding:15px">';
+        for(var key in obj.res){
+            boxstr += '<div class="checkbox"><label><input type="checkbox" name="file-checkbox" value="'+ obj.res[key] +'"> <span class="go-file">' + obj.res[key] + '</span> </input></label></div>';
+        }
+        boxstr += "</div>";
+        $("#checkbox-file-list").html( boxstr );
+    }, function(){
+        console.log("error log")
+    });
+});
+
+
 $("#file-query").click(function(){
-    show_result();
+    var chk_value =[];
+    $('input[name="file-checkbox"]:checked').each(function(){
+        chk_value.push($(this).val());
+    });
+    var data = {};
+    data.files = chk_value;
+    data.query = $("[name='input-command']").val();
+    data.path = $("[name='input-path']").val();
+    data.hostList = [{"ip":"192.168.31.147","username":"lzz","password":"363216"}];
+    post("/file-query", data, function(obj){
+        console.log(obj.res);
+        show_tabs(obj.res, 5);
+    }, function(){
+        console.log("error log")
+    });
+});
+
+$("#add-host-button").click(function () {
+    $("#add-host-modal").modal("show");
+});
+$("#save-host-modal").click(function () {
+    var data = {};
+    data.service = $('[name="modal-service"]').val();
+    data.ip = $('[name="modal-ip"]').val();
+    data.username = $('[name="modal-username"]').val();
+    data.password = $('[name="modal-password"]').val();
+    post("/add-host", data, function(obj){
+        console.log(obj.res);
+        $("#add-host-modal").modal("hide");
+    }, function(){
+        console.log("error log");
+        $("#add-host-modal").modal("hide");
+    });
 });
 
 $("#remote-exe").click(function(){
     var data = {};
     data.cmd = $("[name='input-command']").val();
-    data.hostList = [{"ip":"","username":"","password":""}];
-    console.log( data );
+    data.hostList = [{"ip":"192.168.31.147","username":"lzz","password":"363216"}];
     post("/remote-exe", data, function(obj){
         console.log(obj.res);
         show_tabs(obj.res, 5);
     }, function(){
         console.log("error log")
     });
+});
+
+$(document).on("dblclick",".go-file",function () {
+    var path = $(this).text();
+    var old_path = $("[name='input-path']").val();
+    $("[name='input-path']").val( old_path + path + "/");
+    $("#go-path").click();
 });
 
 function show_result(){
